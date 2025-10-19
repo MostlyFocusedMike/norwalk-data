@@ -1,7 +1,7 @@
 import './style.css'
-import { drawElectionByCandidate } from './components/ElectionByCandidate';
-import { drawElectionByVotingPercentage } from './components/ElectionByVotingPercentage';
-import { drawSourceTable } from './components/SourceTable';
+import { drawElectionByCandidate } from './charts/ElectionByCandidate';
+import { drawElectionByVotingPercentage } from './charts/ElectionByVotingPercentage';
+import { drawSourceTable } from './charts/SourceTable';
 
 (document.querySelector('#app') as HTMLDivElement).innerHTML = /*html*/`
   <main>

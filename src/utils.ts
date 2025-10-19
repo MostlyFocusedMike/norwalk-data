@@ -1,4 +1,4 @@
-import { type Candidate } from './data'
+import { type Candidate } from './charts/data'
 
 export const getCandidateTotalVotes = (candidate?: Candidate) => {
   console.log('candidate:', candidate);

@@ -1,4 +1,4 @@
-import { voterData, type Candidate, type PartyName } from '../data'
+import { voterData, type Candidate, type PartyName } from './data'
 import { Colors } from 'chart.js';
 import Chart from 'chart.js/auto'
 import '../style.css'

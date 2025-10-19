@@ -1,4 +1,4 @@
-import { voterData } from "../data";
+import { voterData } from "./data";
 import { getCandidateTotalVotes } from "../utils";
 const reversedVoterData = structuredClone(voterData).reverse();
 
@@ -29,8 +29,7 @@ const drawRows = () => {
       <td>${getCandidateTotalVotes(thirdParty) || ''}</td>
       <td>${thirdParty2?.name || ''}</td>
       <td>${getCandidateTotalVotes(thirdParty2) || ''}</td>
-    </tr>
-    `;
+    </tr>`;
   }).join('')
 }
 
