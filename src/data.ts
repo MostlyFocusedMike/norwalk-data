@@ -1,37 +1,37 @@
-type PartyName = 'democrat' | 'republican' | 'independent' | 'petitioning' | 'working_families' | 'other';
-type VoterData = {
+export type PartyName = 'democrat' | 'republican' | 'independent' | 'petitioning' | 'working_families' | 'other';
+export type Candidate = {
+  name: string;
+  votes: Partial<Record<PartyName, number>>
+}
+export type VoterData = {
   year: number;
-  pollDataUrl: string | null;
-  populationDataUrl: string | null;
-  candidates: {
-    name: string;
-    votes: Partial<Record<PartyName, number>>
-  }[];
-  townPopulation: number | null; // todo: update
+  pollDataUrl: string;
+  populationDataUrl: string;
+  candidates: Candidate[];
+  townPopulation: number;
   actualPopulationYear?: number,
   isPopEstimate?: boolean;
 }
 
-const frankEsposito = 'Frank J. Esposito';
-const richardMoccia = 'Richard A. Moccia';
-const scottMerrell = 'Scott P. Merrell';
+const richardMoccia = 'Richard Moccia';
+const scottMerrell = 'Scott Merrell';
 const harryRilling = 'Harry Rilling';
 // 2013 rilling vs moccia
 //  8,598 votes to 7,077
 
-export const voterData: VoterData[] = [
+const voterData: VoterData[] = [
   {
     year: 2023,
     pollDataUrl: 'https://electionhistory.ct.gov/eng/contests/view/37639/',
-    populationDataUrl: 'https://s3-us-west-2.amazonaws.com/cerc-pdfs/2025/Norwalk.pdf',
-    townPopulation: 91375,
+    populationDataUrl: 'https://s3-us-west-2.amazonaws.com/cerc-pdfs/2023/Norwalk.pdf',
+    townPopulation: 90821,
     candidates: [
       {
-        name: 'Harry W. Rilling',
+        name: harryRilling,
         votes: {
           democrat: 8026,
           working_families: 358,
-        }
+        },
       },
       {
         name: 'Vincent Scicchitano',
@@ -48,7 +48,7 @@ export const voterData: VoterData[] = [
     townPopulation: 88599,
     candidates: [
       {
-        name: 'Harry W. Rilling',
+        name: harryRilling,
         votes: {
           democrat: 8665,
           working_families: 387,
@@ -71,14 +71,14 @@ export const voterData: VoterData[] = [
     townPopulation: 86302,
     candidates: [
       {
-        name: 'Harry W. Rilling',
+        name: harryRilling,
         votes: {
           democrat: 8397,
           working_families: 385,
         }
       },
       {
-        name: 'Lisa M. Brinton',
+        name: 'Lisa Brinton',
         votes: {
           republican: 7047
         }
@@ -93,26 +93,26 @@ export const voterData: VoterData[] = [
     townPopulation: 88537,
     candidates: [
       {
-        name: 'Harry W. Rilling',
+        name: harryRilling,
         votes: {
           democrat: 7627,
           working_families: 307,
         }
       },
       {
-        name: 'Lisa M. Brinton',
-        votes: {
-          petitioning: 3264
-        }
-      },
-      {
-        name: 'Andrew T. Conroy',
+        name: 'Andrew Conroy',
         votes: {
           republican: 2201
         }
       },
       {
-        name: 'Bruce V. Morris',
+        name: 'Lisa Brinton',
+        votes: {
+          petitioning: 3264
+        }
+      },
+      {
+        name: 'Bruce Morris',
         votes: {
           petitioning: 915
         }
@@ -120,8 +120,31 @@ export const voterData: VoterData[] = [
     ]
   },
   {
+    year: 2015,
+    pollDataUrl: 'https://norwalkct.gov/DocumentCenter/View/8757/2015-CONSOLIDATED-TALLY-SHEET?bidId=',
+    populationDataUrl: 'https://s3-us-west-2.amazonaws.com/cerc-pdfs/2019/norwalk-2019.pdf',
+    isPopEstimate: true,
+    townPopulation: 88500,
+    candidates: [
+      {
+        name: harryRilling,
+        votes: {
+          democrat: 7759,
+          working_families: 309,
+          other: 305
+        }
+      },
+      {
+        name: 'Kelly L. Straniti',
+        votes: {
+          republican: 4896
+        }
+      }
+    ]
+  },
+  {
     year: 2013,
-    pollDataUrl: 'https://www.hamlethub.com/norwalk-connecticut/40190-rilling-wins-norwalk-mayoral-race-over-moccia',
+    pollDataUrl: 'https://norwalkct.gov/DocumentCenter/View/5318/2013-election-results?bidId=',
     populationDataUrl: 'https://s3-us-west-2.amazonaws.com/cerc-pdfs/2019/norwalk-2019.pdf',
     isPopEstimate: true,
     townPopulation: 88537,
@@ -129,13 +152,13 @@ export const voterData: VoterData[] = [
       {
         name: harryRilling,
         votes: {
-          democrat: 8598
+          democrat: 9006
         }
       },
       {
         name: richardMoccia,
         votes: {
-          republican: 7077
+          republican: 7514
         }
       }
     ]
@@ -149,18 +172,18 @@ export const voterData: VoterData[] = [
     townPopulation: 86500,
     candidates: [
       {
-        name: richardMoccia,
-        votes: {
-          republican: 7590
-        }
-      },
-      {
         name: 'Andy Garfunkel',
         votes: {
           democrat: 6253,
           working_families: 502
         }
-      }
+      },
+      {
+        name: richardMoccia,
+        votes: {
+          republican: 7590
+        }
+      },
     ]
   },
   {
@@ -172,16 +195,16 @@ export const voterData: VoterData[] = [
     townPopulation: 85250,
     candidates: [
       {
-        name: richardMoccia,
-        votes: {
-          republican: 7925,
-        }
-      },
-      {
         name: 'Steven Serasis',
         votes: {
           democrat: 4775,
           other: 300
+        }
+      },
+      {
+        name: richardMoccia,
+        votes: {
+          republican: 7925,
         }
       },
       {
@@ -201,16 +224,16 @@ export const voterData: VoterData[] = [
     townPopulation: 84750,
     candidates: [
       {
-        name: richardMoccia,
-        votes: {
-          republican: 7763,
-        }
-      },
-      {
-        name: 'Walter O. Briggs III',
+        name: 'Walter Briggs',
         votes: {
           democrat: 4876,
           working_families: 298,
+        }
+      },
+      {
+        name: richardMoccia,
+        votes: {
+          republican: 7763,
         }
       },
       {
@@ -230,19 +253,19 @@ export const voterData: VoterData[] = [
     townPopulation: 84250,
     candidates: [
       {
+        name: 'Alex Knopp',
+        votes: {
+          democrat: 8083,
+        }
+      },
+      {
         name: richardMoccia,
         votes: {
           republican: 8259,
         },
       },
       {
-        name: 'Alex A. Knopp',
-        votes: {
-          democrat: 8083,
-        }
-      },
-      {
-        name: 'Jose A. Lucero',
+        name: 'Jose Lucero',
         votes: {
           working_families: 192
         }
@@ -256,3 +279,7 @@ export const voterData: VoterData[] = [
     ]
   },
 ]
+
+voterData.reverse();
+
+export { voterData }

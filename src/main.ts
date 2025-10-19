@@ -1,24 +1,21 @@
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import { drawElectionByCandidate } from './components/ElectionByCandidate';
+import { drawElectionByVotingPercentage } from './components/ElectionByVotingPercentage';
+import { drawSourceTable } from './components/SourceTable';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+(document.querySelector('#app') as HTMLDivElement).innerHTML = /*html*/`
+  <main>
+    <div class="chart-container" style="position: relative; height: 40rem; width:80%; margin: 1rem auto">
+      <canvas id="chart-by-candidate"></canvas>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+    <div id="sources-table-container"></div>
+    <div class="chart-container" style="position: relative; height: 40rem; width:80%; margin: 1rem auto">
+      <canvas id="chart-by-votes"></canvas>
+    </div>
+  </main>
+`;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+
+drawElectionByCandidate();
+drawSourceTable();
+drawElectionByVotingPercentage();
